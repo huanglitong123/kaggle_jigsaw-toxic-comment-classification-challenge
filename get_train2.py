@@ -22,7 +22,7 @@ for low in range(6):
         #    pdb.set_trace()
     bad_comment = pd.DataFrame()
     bad_len = len(bad_list)
-    comment_len = 10000
+    comment_len = 20000
     for i in range(comment_len):
         # temp = random.randint(0, 16224)
         # bad_comment[i] = train.values[bad_list[i]] + train.values[bad_list[temp]]
@@ -42,8 +42,8 @@ for low in range(6):
             bad_comment[real][j] = 1
     bad_comment.columns = ["id", "comment_text", "toxic",
                            "severe_toxic", "obscene", "threat", "insult", "identity_hate"]
-    path = './data/bad_comment'+comment[low]+'.csv'
-    path2 = './data/train_'+comment[low]+'.csv'
+    path = './data/bad_comment2'+comment[low]+'.csv'
+    path2 = './data/train2_'+comment[low]+'.csv'
     bad_comment.to_csv(path)
     bad_comment = pd.read_csv(path)
     result = pd.concat([train, bad_comment])

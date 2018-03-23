@@ -13,7 +13,7 @@ test['comment_text'] = test['comment_text'].apply(lambda x: clean(x))
 y_train = test['comment_text']
 
 for label in comment:
-    path = './data/train_'+label+'.csv'
+    path = './data/train2_'+label+'.csv'
     train = pd.read_csv(path)
     train['comment_text'] = train['comment_text'].apply(lambda x: clean(x))
     X_train = train['comment_text']
@@ -33,10 +33,10 @@ for label in comment:
     #    C=1.0, dual=True, random_state=520, class_weight="balanced").fit(xtrain_tfv_ctv, y)
     # pdb.set_trace()
     test[label] = model.predict_proba(y_tfv_ctv)[:, 1]
-    test[label].to_csv('./result/NBSVM_3_17_new_train_' +
+    test[label].to_csv('./result/NBSVM_3_22_new_train2_' +
                        label+'.csv', index=False)
     gc.collect()
 
 test.drop('comment_text', axis=1, inplace=True)
-test.to_csv('./result/NBSVM_3_17_new_train.csv', index=False)
+test.to_csv('./result/NBSVM_3_22_new_train2.csv', index=False)
 #test.to_csv('./result/LR_2_21_clean2_train2_3_toxic.csv', index=False)
